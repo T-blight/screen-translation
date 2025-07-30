@@ -93,6 +93,24 @@ abstract class AppLocalizations {
 
   /// A list of this localizations delegate's supported locales.
   static const List<Locale> supportedLocales = <Locale>[Locale('vi')];
+
+  /// No description provided for @homePagePame.
+  ///
+  /// In vi, this message translates to:
+  /// **'Dịch Màn Hình'**
+  String get homePagePame;
+
+  /// No description provided for @start.
+  ///
+  /// In vi, this message translates to:
+  /// **'Bắt đầu'**
+  String get start;
+
+  /// No description provided for @vipPack.
+  ///
+  /// In vi, this message translates to:
+  /// **'gói vip'**
+  String get vipPack;
 }
 
 class _AppLocalizationsDelegate

@@ -7,7 +7,7 @@ class HomeViewModel extends ChangeNotifier {
     isLoading = true;
     notifyListeners();
 
-    tasks = await _repository.getTasks();
+    // tasks = await _repository.getTasks();
 
     isLoading = false;
     notifyListeners();

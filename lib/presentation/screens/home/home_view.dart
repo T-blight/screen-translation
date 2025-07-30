@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tombozi/presentation/widgets/app_bar/base_app_bar.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({super.key});
@@ -6,22 +7,15 @@ class HomeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Trang chủ')),
-      body: viewModel.isLoading
-          ? const Center(child: CircularProgressIndicator())
-          : ListView.builder(
-        itemCount: viewModel.tasks.length,
-        itemBuilder: (context, index) {
-          final task = viewModel.tasks[index];
-          return ListTile(
-            title: Text(task.title),
-            subtitle: Text(task.description),
-          );
-        },
+      appBar: BaseAppBar(
+        context: context,
+        pageIndex: 0,
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: viewModel.loadTasks,
-        child: const Icon(Icons.refresh),
+      body: Center(
+        child: Text(
+          'Trang chủ' ,
+          style: TextStyle(fontSize: 20),
+        ),
       ),
     );
   }
