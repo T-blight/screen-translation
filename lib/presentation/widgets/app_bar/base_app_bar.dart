@@ -9,7 +9,13 @@ class BaseAppBar extends AppBar {
     required int pageIndex,
   }) : super(
     key: key,
-    title: Text(_getTitle(context, pageIndex)),
+    title: Text(
+      _getTitle(context, pageIndex),
+      style: TextStyle(
+        fontFamily: 'Roboto',
+        fontSize: Theme.of(context).textTheme.titleLarge!.fontSize! + 7,
+      ),
+    ),
     actions: _getActions(context, pageIndex),
   );
 
@@ -35,6 +41,4 @@ class BaseAppBar extends AppBar {
 
     return handleAppBar.showIcons(context);
   }
-
-
 }

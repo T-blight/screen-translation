@@ -7,28 +7,67 @@ void main() {
   runApp(const MyApp());
 }
 
+
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    final lightGray = Color(0xFFF0F0F0); // nền light mode
+
     return MaterialApp(
       title: 'Flutter Demo',
       supportedLocales: const [
-        Locale('en'),     // English
-        Locale('vi'),     // Vietnamese
+        Locale('en'),
+        Locale('vi'),
       ],
       localizationsDelegates: const [
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
         AppLocalizations.delegate,
-
       ],
-      locale: Locale('vi'),
+      locale: const Locale('vi'),
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        brightness: Brightness.light,
+        scaffoldBackgroundColor: lightGray,
+        primaryColor: Colors.black,
+        appBarTheme: AppBarTheme(
+          backgroundColor: lightGray,
+          foregroundColor: Colors.black,
+          elevation: 0.3,
+        ),
+        textTheme: const TextTheme(
+          bodyLarge: TextStyle(color: Colors.black87),
+          bodyMedium: TextStyle(color: Colors.black87),
+        ),
+        iconTheme: const IconThemeData(color: Colors.black54),
+        colorScheme: ColorScheme.fromSwatch().copyWith(
+          secondary: Colors.orange,
+          background: lightGray,
+        ),
       ),
+      darkTheme: ThemeData(
+        brightness: Brightness.dark,
+        scaffoldBackgroundColor: Colors.black,
+        primaryColor: Colors.white,
+        cardColor: Colors.white.withOpacity(0.16), // trắng mờ hơn một chút
+        appBarTheme: const AppBarTheme(
+          backgroundColor: Colors.black,
+          foregroundColor: Colors.white,
+          elevation: 1,
+        ),
+        textTheme: const TextTheme(
+          bodyLarge: TextStyle(color: Colors.white),
+          bodyMedium: TextStyle(color: Colors.white70),
+        ),
+        iconTheme: const IconThemeData(color: Colors.white70),
+        colorScheme: const ColorScheme.dark().copyWith(
+          secondary: Colors.orange,
+          background: Colors.black,
+        ),
+      ),
+      themeMode: ThemeMode.system,
       home: const HomeView(),
     );
   }

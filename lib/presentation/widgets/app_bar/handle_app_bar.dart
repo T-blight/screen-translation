@@ -15,7 +15,6 @@ class HandleHomePage implements HandleAppBar {
         onPressed: () => {},
         label: Text(
           context.loc.vipPack,
-          font: FontFamily
         ),
         icon: Icon(Icons.workspace_premium),
       )
