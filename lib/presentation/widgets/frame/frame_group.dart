@@ -8,6 +8,8 @@ class FrameGroup extends StatelessWidget {
   final bool asButton;
   final VoidCallback? onPressed;
   final double vertical;
+  final double paddingButton;
+  final double paddingCard;
   const FrameGroup({
     Key? key,
     required this.displayWidget,
@@ -17,6 +19,8 @@ class FrameGroup extends StatelessWidget {
     this.asButton = false,
     this.onPressed,
     this.vertical = 7,
+    this.paddingButton = 13,
+    this.paddingCard = 0,
   }) : super(key: key);
 
   @override
@@ -32,7 +36,7 @@ class FrameGroup extends StatelessWidget {
         onTap: onPressed,
         borderRadius: borderRadius,
         child: Padding(
-          padding: const EdgeInsets.all(10),
+          padding: EdgeInsets.all(paddingButton),
           child: displayWidget,
         ),
       ),
@@ -42,14 +46,14 @@ class FrameGroup extends StatelessWidget {
       elevation: elevation,
       shape: RoundedRectangleBorder(borderRadius: borderRadius),
       child: Padding(
-        padding: const EdgeInsets.all(0),
+        padding: EdgeInsets.all(paddingCard),
         child: displayWidget,
       ),
     );
 
     return Center(
       child: Padding(
-        padding: EdgeInsets.symmetric(vertical: vertical), // 16 là khoảng cách trên dưới
+        padding: EdgeInsets.symmetric(vertical: vertical),
         child: FractionallySizedBox(
           widthFactor: weightWidget,
           child: content,
