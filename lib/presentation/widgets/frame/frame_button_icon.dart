@@ -1,5 +1,5 @@
 class BackgroundType {
-  static int _type = 0; // biến static ẩn
+  static int _type = 0;
 
   static int get type => _type;
 

@@ -3,6 +3,9 @@
 
   "homePagePame" : "Dịch Màn Hình",
   "start" : "Bắt đầu",
-  "vipPack": "gói vip"
-
+  "vipPack": "gói vip",
+  "clickToTrans": "Nhấn để bắt đầu",
+  "buttonTransScreenPaste": "Dán",
+  "buttonTransScreenImage": "Ảnh",
+  "buttonTransScreenCamera": "Camera"
 }

@@ -1,13 +1,29 @@
 import 'package:flutter/material.dart';
 import 'package:tombozi/core/constants/app_colors.dart';
+import 'package:tombozi/presentation/contracts/navigation_bar_controller_contract.dart';
 import 'package:tombozi/presentation/widgets/app_bar/base_app_bar.dart';
+import 'package:tombozi/presentation/widgets/trans/language_switch_widget.dart';
 import 'package:tombozi/presentation/widgets/frame/frame_group.dart';
+
+import '../../widgets/navigation_bar.dart/navigation_bar_ui.dart';
 
 final Color _clr = AppColors.translateButtonColor;
 
-class HomeView extends StatelessWidget {
-  const HomeView({super.key});
+///Test
+class NavigationBarIndex implements NavigationBarControllerContract{
+  @override
+  int get currentIndex => NavigationBarControllerContract.pageIndex;
 
+  @override
+  void setCurrentIndex(int index) {
+    NavigationBarControllerContract.pageIndex = index;
+  }
+}
+
+class HomeView extends StatelessWidget {
+  final NavigationBarIndex navBarIndex = NavigationBarIndex();
+
+  HomeView({super.key});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -15,7 +31,10 @@ class HomeView extends StatelessWidget {
         context: context,
         pageIndex: 0,
       ),
-      body: const _HomeBody(),
+      body: SingleChildScrollView(
+        child: _HomeBody(),
+      ),
+      bottomNavigationBar: NavigationBarUi(nav: navBarIndex),
     );
   }
 }
@@ -32,6 +51,10 @@ class _HomeBody extends StatelessWidget {
         FrameGroup(
           displayWidget: _TranslationModeWidget(),
           vertical:7
+        ),
+        FrameGroup(
+            displayWidget: _TranslationModeWidget(),
+            vertical:7
         ),
       ]
     );
@@ -60,44 +83,11 @@ class _TranslationSettingsLanguageWidget extends StatelessWidget {
   const _TranslationSettingsLanguageWidget({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Expanded(
-          flex: 4,
-          child: FrameGroup(
-            displayWidget: Text("Tiếng Việt", textAlign: TextAlign.center),
-            elevation: 1,
-            asButton: true,
-            onPressed: () {},
-            color: _clr,
-            weightWidget: 1,
-          ),
-        ),
-        Expanded(
-          flex: 1,
-          child: Center(
-            child: Icon(Icons.swap_horiz_sharp, color: Colors.orange),
-          ),
-        ),
-        Expanded(
-          flex: 4,
-          child: FrameGroup(
-            displayWidget: Text("Tiếng Việt", textAlign: TextAlign.center),
-            asButton: true,
-            onPressed: () {},
-            color: _clr,
-            elevation: 1,
-            weightWidget: 1,
-          )
-        ),
-      ],
-    );
+    return LanguageSwitchWidget();
   }
 }
 
 class _TranslationEngineSelectorWidget extends StatelessWidget{
-  _TranslationEngineSelectorWidget({Key? key}) : super(key: key);
-
   @override
   Widget build(BuildContext context){
     return Center(
@@ -200,7 +190,6 @@ class _TranslationModeWidget extends StatelessWidget {
         ),
       );
     }
-
     return Column(
       children: [
         FrameGroup(

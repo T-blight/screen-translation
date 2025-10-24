@@ -111,6 +111,30 @@ abstract class AppLocalizations {
   /// In vi, this message translates to:
   /// **'gói vip'**
   String get vipPack;
+
+  /// No description provided for @clickToTrans.
+  ///
+  /// In vi, this message translates to:
+  /// **'Nhấn để bắt đầu'**
+  String get clickToTrans;
+
+  /// No description provided for @buttonTransScreenPaste.
+  ///
+  /// In vi, this message translates to:
+  /// **'Dán'**
+  String get buttonTransScreenPaste;
+
+  /// No description provided for @buttonTransScreenImage.
+  ///
+  /// In vi, this message translates to:
+  /// **'Ảnh'**
+  String get buttonTransScreenImage;
+
+  /// No description provided for @buttonTransScreenCamera.
+  ///
+  /// In vi, this message translates to:
+  /// **'Camera'**
+  String get buttonTransScreenCamera;
 }
 
 class _AppLocalizationsDelegate

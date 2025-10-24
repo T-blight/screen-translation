@@ -16,4 +16,16 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get vipPack => 'gói vip';
+
+  @override
+  String get clickToTrans => 'Nhấn để bắt đầu';
+
+  @override
+  String get buttonTransScreenPaste => 'Dán';
+
+  @override
+  String get buttonTransScreenImage => 'Ảnh';
+
+  @override
+  String get buttonTransScreenCamera => 'Camera';
 }
