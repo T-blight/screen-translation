@@ -24,10 +24,13 @@ class SettingView extends StatelessWidget{
 class _SettingView extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        FrameGroup(displayWidget: _UserInterfaceWiget())
-      ],
+    return Container(
+      margin: const EdgeInsets.only(top:10),
+      child: Column(
+        children: [
+          FrameGroup(displayWidget: _UserInterfaceWiget(),paddingCard: 10,),
+        ],
+      ),
     );
   }
 }
@@ -35,36 +38,66 @@ class _SettingView extends StatelessWidget{
 class _UserInterfaceWiget extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Expanded(
-          flex: 1,
-          child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: AspectRatio(
-              aspectRatio: 1,
-              child: Image.asset(
-                'assets/images/sample.png',
-                fit: BoxFit.cover,
+
+    return Padding(
+      padding: const EdgeInsets.only(top: 5.0, bottom: 5),
+      child: Row(
+        children: [
+          Expanded(
+            flex: 1,
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: AspectRatio(
+                aspectRatio: 1,
+                child: Container(
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: Colors.grey,
+                  ),
+                  child: const Icon(
+                    Icons.person,
+                    size: 50,
+                    color: Colors.blue,
+                  ),
+                ),
               ),
             ),
           ),
-        ),
-        Expanded(
-          flex: 1,
-          child: Padding(
-            padding: const EdgeInsets.all(8.0), // cách đều các cạnh trong vùng Expanded
-            child: AspectRatio(
-              aspectRatio: 1, // đảm bảo hình vuông
-              child: Image.asset(
-                'assets/images/sample.png',
-                fit: BoxFit.cover, // lấp đầy ô vuông
-              ),
-            ),
-          ),
-        ),
-      ]
+
+          Expanded(
+            flex: 4,
+            child: Column(
+              children: [
+                Text("MY Name", style: TextStyle(
+                  fontSize: 30,
+                )),
+                Text("member")
+              ],
+          ))
+          // Expanded(
+          //   flex: 1,
+          //   child: Padding(
+          //     padding: const EdgeInsets.all(8.0),
+          //     child: AspectRatio(
+          //       aspectRatio: 1,
+          //       child: Image.asset(
+          //         'assets/default/images/userDefault.jpg',
+          //         fit: BoxFit.cover,
+          //       ),
+          //     ),
+          //   ),
+          // ),
+        ]
+      ),
     );
+  }
+}
+
+class _UiSettingInterfaceWidget extends StatelessWidget{
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    throw UnimplementedError();
   }
 }
 

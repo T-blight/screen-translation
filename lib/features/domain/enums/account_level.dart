@@ -1,0 +1,4 @@
+enum AccountLevel {
+  normal,
+  premium,
+}

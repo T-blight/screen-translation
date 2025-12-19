@@ -1,17 +1,28 @@
-class TextEntity{
-  late final String _textTrans;
-  late final String _language;
+class TextEntity {
+  final String id;
+  final String textSource;
+  final String sourceLanguageCode;
+  final String textTarget;
+  final String targetLanguageCode;
 
-  TextEntity(this._textTrans, this._language);
+  const TextEntity({
+    required this.id,
+    required this.textSource,
+    required this.sourceLanguageCode,
+    required this.textTarget,
+    required this.targetLanguageCode,
+  });
 
-  set textTrans(String textTrans){
-    _textTrans = textTrans;
+  TextEntity copyWith({
+    String? textTarget,
+    String? targetLanguageCode,
+  }) {
+    return TextEntity(
+      id: id,
+      textSource: textSource,
+      sourceLanguageCode: sourceLanguageCode,
+      textTarget: textTarget ?? this.textTarget,
+      targetLanguageCode: targetLanguageCode ?? this.targetLanguageCode,
+    );
   }
-  set language(String language) {
-    _language = language;
-  }
-
-  String get textTrans => _textTrans;
-  String get language => _language;
-
 }

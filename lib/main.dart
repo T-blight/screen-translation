@@ -7,7 +7,7 @@ import 'package:tombozi/presentation/screens/setting/setting_view.dart';
 import 'package:tombozi/presentation/screens/translate/translate_view.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp( MyApp());
 }
 
 

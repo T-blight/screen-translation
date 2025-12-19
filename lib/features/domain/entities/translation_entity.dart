@@ -1,13 +1,15 @@
-import 'package:tombozi/features/domain/entities/text_entity.dart';
-
 class TranslationEntity {
-  final TextEntity _originalText;
-  final TextEntity _translatedText;
+  final int id;
+  final String sourceText;
+  final String translatedText;
+  final String sourceLanguageCode;
+  final String targetLanguageCode;
 
-  TranslationEntity(this._originalText, this._translatedText);
-
-  String get contentOriginalText => _originalText.textTrans;
-  String get contentTranslatedText => _translatedText.textTrans;
-
-
+  const TranslationEntity({
+    required this.id,
+    required this.sourceText,
+    required this.translatedText,
+    required this.sourceLanguageCode,
+    required this.targetLanguageCode,
+  });
 }

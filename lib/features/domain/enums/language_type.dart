@@ -1,0 +1,4 @@
+enum Languagetype{
+  origin,
+  translated,
+}
