@@ -135,6 +135,54 @@ abstract class AppLocalizations {
   /// In vi, this message translates to:
   /// **'Camera'**
   String get buttonTransScreenCamera;
+
+  /// No description provided for @styleTitleSetting.
+  ///
+  /// In vi, this message translates to:
+  /// **'Hộp thoại hiển thị'**
+  String get styleTitleSetting;
+
+  /// No description provided for @styleSubSetting.
+  ///
+  /// In vi, this message translates to:
+  /// **'Thay đổi kích thước, màu và kiểu chữ phù hợp với cá nhân'**
+  String get styleSubSetting;
+
+  /// No description provided for @styleTitleAreaOption.
+  ///
+  /// In vi, this message translates to:
+  /// **'Dịch khu vực'**
+  String get styleTitleAreaOption;
+
+  /// No description provided for @styleSubAreaOption.
+  ///
+  /// In vi, this message translates to:
+  /// **'Thay đổi kiểu dáng, phong cách chữ để phù hợp với cá nhân'**
+  String get styleSubAreaOption;
+
+  /// No description provided for @assistiveBubbleTitleSetting.
+  ///
+  /// In vi, this message translates to:
+  /// **'Tùy chỉnh bong bóng hỗ trợ'**
+  String get assistiveBubbleTitleSetting;
+
+  /// No description provided for @assistiveBubbleSubSetting.
+  ///
+  /// In vi, this message translates to:
+  /// **'Thay đổi giao diện bong bóng hỗ trợ theo ý của bạn'**
+  String get assistiveBubbleSubSetting;
+
+  /// No description provided for @assistiveBubbleActionTitleSetting.
+  ///
+  /// In vi, this message translates to:
+  /// **'Tùy chỉnh hành vi bong bóng hỗ trợ'**
+  String get assistiveBubbleActionTitleSetting;
+
+  /// No description provided for @assistiveBubbleActionSubSetting.
+  ///
+  /// In vi, this message translates to:
+  /// **'Thay đổi hành vi, thao tác và phản hồi của bong bóng trợ năng'**
+  String get assistiveBubbleActionSubSetting;
 }
 
 class _AppLocalizationsDelegate

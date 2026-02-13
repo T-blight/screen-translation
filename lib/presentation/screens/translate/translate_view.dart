@@ -6,7 +6,6 @@ import 'package:tombozi/presentation/widgets/frame/frame_group.dart';
 import 'package:tombozi/presentation/widgets/trans/language_switch_widget.dart';
 
 import '../../../features/domain/entities/text_entity.dart';
-import '../../contracts/translation_contract.dart';
 import '../../widgets/app_bar/base_app_bar.dart';
 import '../../widgets/navigation_bar.dart/navigation_bar_ui.dart';
 import '../home/home_view.dart';

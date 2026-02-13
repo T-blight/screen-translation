@@ -1,7 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
-import '../../contracts/navigation_bar_controller_contract.dart';
 
 class NavigationBarUi extends StatelessWidget {
   final NavigationBarControllerContract nav;
@@ -48,4 +45,12 @@ class NavigationBarUi extends StatelessWidget {
       destinations: buildDestinations(nav.currentIndex)
     );
   }
+}
+
+class NavigationBarControllerContract {
+  static int pageIndex =1;
+
+  get currentIndex => null;
+
+  void setCurrentIndex(int index) {}
 }

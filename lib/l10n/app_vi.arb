@@ -7,5 +7,18 @@
   "clickToTrans": "Nhấn để bắt đầu",
   "buttonTransScreenPaste": "Dán",
   "buttonTransScreenImage": "Ảnh",
-  "buttonTransScreenCamera": "Camera"
+  "buttonTransScreenCamera": "Camera",
+
+
+  "styleTitleSetting": "Hộp thoại hiển thị",
+  "styleSubSetting": "Thay đổi kích thước, màu và kiểu chữ phù hợp với cá nhân",
+
+  "styleTitleAreaOption": "Dịch khu vực",
+  "styleSubAreaOption": "Thay đổi kiểu dáng, phong cách chữ để phù hợp với cá nhân",
+
+  "assistiveBubbleTitleSetting": "Tùy chỉnh bong bóng hỗ trợ",
+  "assistiveBubbleSubSetting": "Thay đổi giao diện bong bóng hỗ trợ theo ý của bạn",
+
+  "assistiveBubbleActionTitleSetting": "Tùy chỉnh hành vi bong bóng hỗ trợ",
+  "assistiveBubbleActionSubSetting": "Thay đổi hành vi, thao tác và phản hồi của bong bóng trợ năng"
 }

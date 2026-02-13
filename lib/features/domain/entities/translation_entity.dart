@@ -1,15 +1,13 @@
 class TranslationEntity {
-  final int id;
   final String sourceText;
-  final String translatedText;
-  final String sourceLanguageCode;
-  final String targetLanguageCode;
+  final String targetText;
+  final String sourceCode;
+  final String targetCode;
 
   const TranslationEntity({
-    required this.id,
     required this.sourceText,
-    required this.translatedText,
-    required this.sourceLanguageCode,
-    required this.targetLanguageCode,
+    required this.targetText,
+    required this.sourceCode,
+    required this.targetCode,
   });
 }

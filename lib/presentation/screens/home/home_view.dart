@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:tombozi/core/constants/app_colors.dart';
-import 'package:tombozi/presentation/contracts/navigation_bar_controller_contract.dart';
 import 'package:tombozi/presentation/widgets/app_bar/base_app_bar.dart';
 import 'package:tombozi/presentation/widgets/trans/language_switch_widget.dart';
 import 'package:tombozi/presentation/widgets/frame/frame_group.dart';
