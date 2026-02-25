@@ -1,16 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_overlay_window/flutter_overlay_window.dart';
 
-class OverlayContent extends StatefulWidget {
-  const OverlayContent({super.key});
+import '../../../DI/injection.dart';
+import '../../viewmodels/overlay_viewmodel.dart';
+
+class OverlayView extends StatefulWidget {
+  const OverlayView({super.key});
 
   @override
-  State<OverlayContent> createState() => _OverlayContentState();
+  State<OverlayView> createState() => _OverlayViewState();
 }
 
-class _OverlayContentState extends State<OverlayContent> {
-
-
+class _OverlayViewState extends State<OverlayView> {
+  final overlay = sl<OverlayViewModel>();
   @override
   void initState() {
     super.initState();
@@ -19,7 +21,6 @@ class _OverlayContentState extends State<OverlayContent> {
       });
     });
   }
-
   @override
   Widget build(BuildContext context) {
     return Material(
@@ -66,7 +67,10 @@ class _OverlayContentState extends State<OverlayContent> {
 ///
 // import 'package:flutter/material.dart';
 // import 'package:flutter_overlay_window/flutter_overlay_window.dart';
-// import 'package:tombozi/presentation/widgets/overlays/overlay_bubble.dart';
+// import 'package:tombozi/presentation/widgets/overlays/
+//
+//
+// overlay_view.dart';
 //
 // void main() {
 //   runApp(const MyApp());

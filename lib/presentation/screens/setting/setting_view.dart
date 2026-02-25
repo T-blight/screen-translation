@@ -38,10 +38,10 @@ class _SettingView extends StatelessWidget{
             displayWidget: _UserInterfaceWidget(),
           ),
 
-          // FrameGroup(
-          //   displayWidget: _CustomizeDisplayWidget(),
-          // ),
-          //
+          FrameGroup(
+            displayWidget: _CustomizeDisplayWidget(),
+          ),
+
           // FrameGroup(
           //   displayWidget: _AssistiveBubbleWidget(),
           // )
