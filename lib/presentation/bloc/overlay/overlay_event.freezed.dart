@@ -55,14 +55,14 @@ extension OverlayEventPatterns on OverlayEvent {
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( _InitConfig value)?  initConfig,TResult Function( _UpdateConfig value)?  updateConfig,TResult Function( _ShowOverlay value)?  showOverlay,TResult Function( _ShowListFeatureOverlay value)?  showListFeatureOverlay,required TResult orElse(),}){
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( LaunchOverlay value)?  launchOverlay,TResult Function( UpdateOverlay value)?  updateOverlay,TResult Function( ShowOverlay value)?  showOverlay,TResult Function( SwitchFeatureOverlay value)?  switchFeatureOverlay,required TResult orElse(),}){
 final _that = this;
 switch (_that) {
-case _InitConfig() when initConfig != null:
-return initConfig(_that);case _UpdateConfig() when updateConfig != null:
-return updateConfig(_that);case _ShowOverlay() when showOverlay != null:
-return showOverlay(_that);case _ShowListFeatureOverlay() when showListFeatureOverlay != null:
-return showListFeatureOverlay(_that);case _:
+case LaunchOverlay() when launchOverlay != null:
+return launchOverlay(_that);case UpdateOverlay() when updateOverlay != null:
+return updateOverlay(_that);case ShowOverlay() when showOverlay != null:
+return showOverlay(_that);case SwitchFeatureOverlay() when switchFeatureOverlay != null:
+return switchFeatureOverlay(_that);case _:
   return orElse();
 
 }
@@ -80,14 +80,14 @@ return showListFeatureOverlay(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( _InitConfig value)  initConfig,required TResult Function( _UpdateConfig value)  updateConfig,required TResult Function( _ShowOverlay value)  showOverlay,required TResult Function( _ShowListFeatureOverlay value)  showListFeatureOverlay,}){
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( LaunchOverlay value)  launchOverlay,required TResult Function( UpdateOverlay value)  updateOverlay,required TResult Function( ShowOverlay value)  showOverlay,required TResult Function( SwitchFeatureOverlay value)  switchFeatureOverlay,}){
 final _that = this;
 switch (_that) {
-case _InitConfig():
-return initConfig(_that);case _UpdateConfig():
-return updateConfig(_that);case _ShowOverlay():
-return showOverlay(_that);case _ShowListFeatureOverlay():
-return showListFeatureOverlay(_that);case _:
+case LaunchOverlay():
+return launchOverlay(_that);case UpdateOverlay():
+return updateOverlay(_that);case ShowOverlay():
+return showOverlay(_that);case SwitchFeatureOverlay():
+return switchFeatureOverlay(_that);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -104,14 +104,14 @@ return showListFeatureOverlay(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( _InitConfig value)?  initConfig,TResult? Function( _UpdateConfig value)?  updateConfig,TResult? Function( _ShowOverlay value)?  showOverlay,TResult? Function( _ShowListFeatureOverlay value)?  showListFeatureOverlay,}){
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( LaunchOverlay value)?  launchOverlay,TResult? Function( UpdateOverlay value)?  updateOverlay,TResult? Function( ShowOverlay value)?  showOverlay,TResult? Function( SwitchFeatureOverlay value)?  switchFeatureOverlay,}){
 final _that = this;
 switch (_that) {
-case _InitConfig() when initConfig != null:
-return initConfig(_that);case _UpdateConfig() when updateConfig != null:
-return updateConfig(_that);case _ShowOverlay() when showOverlay != null:
-return showOverlay(_that);case _ShowListFeatureOverlay() when showListFeatureOverlay != null:
-return showListFeatureOverlay(_that);case _:
+case LaunchOverlay() when launchOverlay != null:
+return launchOverlay(_that);case UpdateOverlay() when updateOverlay != null:
+return updateOverlay(_that);case ShowOverlay() when showOverlay != null:
+return showOverlay(_that);case SwitchFeatureOverlay() when switchFeatureOverlay != null:
+return switchFeatureOverlay(_that);case _:
   return null;
 
 }
@@ -128,13 +128,13 @@ return showListFeatureOverlay(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( OverlayConfig config)?  initConfig,TResult Function( OverlayConfig config)?  updateConfig,TResult Function()?  showOverlay,TResult Function()?  showListFeatureOverlay,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( OverlayConfig? config)?  launchOverlay,TResult Function( OverlayConfig? config)?  updateOverlay,TResult Function()?  showOverlay,TResult Function()?  switchFeatureOverlay,required TResult orElse(),}) {final _that = this;
 switch (_that) {
-case _InitConfig() when initConfig != null:
-return initConfig(_that.config);case _UpdateConfig() when updateConfig != null:
-return updateConfig(_that.config);case _ShowOverlay() when showOverlay != null:
-return showOverlay();case _ShowListFeatureOverlay() when showListFeatureOverlay != null:
-return showListFeatureOverlay();case _:
+case LaunchOverlay() when launchOverlay != null:
+return launchOverlay(_that.config);case UpdateOverlay() when updateOverlay != null:
+return updateOverlay(_that.config);case ShowOverlay() when showOverlay != null:
+return showOverlay();case SwitchFeatureOverlay() when switchFeatureOverlay != null:
+return switchFeatureOverlay();case _:
   return orElse();
 
 }
@@ -152,13 +152,13 @@ return showListFeatureOverlay();case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( OverlayConfig config)  initConfig,required TResult Function( OverlayConfig config)  updateConfig,required TResult Function()  showOverlay,required TResult Function()  showListFeatureOverlay,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( OverlayConfig? config)  launchOverlay,required TResult Function( OverlayConfig? config)  updateOverlay,required TResult Function()  showOverlay,required TResult Function()  switchFeatureOverlay,}) {final _that = this;
 switch (_that) {
-case _InitConfig():
-return initConfig(_that.config);case _UpdateConfig():
-return updateConfig(_that.config);case _ShowOverlay():
-return showOverlay();case _ShowListFeatureOverlay():
-return showListFeatureOverlay();case _:
+case LaunchOverlay():
+return launchOverlay(_that.config);case UpdateOverlay():
+return updateOverlay(_that.config);case ShowOverlay():
+return showOverlay();case SwitchFeatureOverlay():
+return switchFeatureOverlay();case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -175,13 +175,13 @@ return showListFeatureOverlay();case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( OverlayConfig config)?  initConfig,TResult? Function( OverlayConfig config)?  updateConfig,TResult? Function()?  showOverlay,TResult? Function()?  showListFeatureOverlay,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( OverlayConfig? config)?  launchOverlay,TResult? Function( OverlayConfig? config)?  updateOverlay,TResult? Function()?  showOverlay,TResult? Function()?  switchFeatureOverlay,}) {final _that = this;
 switch (_that) {
-case _InitConfig() when initConfig != null:
-return initConfig(_that.config);case _UpdateConfig() when updateConfig != null:
-return updateConfig(_that.config);case _ShowOverlay() when showOverlay != null:
-return showOverlay();case _ShowListFeatureOverlay() when showListFeatureOverlay != null:
-return showListFeatureOverlay();case _:
+case LaunchOverlay() when launchOverlay != null:
+return launchOverlay(_that.config);case UpdateOverlay() when updateOverlay != null:
+return updateOverlay(_that.config);case ShowOverlay() when showOverlay != null:
+return showOverlay();case SwitchFeatureOverlay() when switchFeatureOverlay != null:
+return switchFeatureOverlay();case _:
   return null;
 
 }
@@ -192,23 +192,23 @@ return showListFeatureOverlay();case _:
 /// @nodoc
 
 
-class _InitConfig implements OverlayEvent {
-  const _InitConfig(this.config);
+class LaunchOverlay implements OverlayEvent {
+  const LaunchOverlay({this.config});
   
 
- final  OverlayConfig config;
+ final  OverlayConfig? config;
 
 /// Create a copy of OverlayEvent
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
-_$InitConfigCopyWith<_InitConfig> get copyWith => __$InitConfigCopyWithImpl<_InitConfig>(this, _$identity);
+$LaunchOverlayCopyWith<LaunchOverlay> get copyWith => _$LaunchOverlayCopyWithImpl<LaunchOverlay>(this, _$identity);
 
 
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _InitConfig&&(identical(other.config, config) || other.config == config));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is LaunchOverlay&&(identical(other.config, config) || other.config == config));
 }
 
 
@@ -217,38 +217,38 @@ int get hashCode => Object.hash(runtimeType,config);
 
 @override
 String toString() {
-  return 'OverlayEvent.initConfig(config: $config)';
+  return 'OverlayEvent.launchOverlay(config: $config)';
 }
 
 
 }
 
 /// @nodoc
-abstract mixin class _$InitConfigCopyWith<$Res> implements $OverlayEventCopyWith<$Res> {
-  factory _$InitConfigCopyWith(_InitConfig value, $Res Function(_InitConfig) _then) = __$InitConfigCopyWithImpl;
+abstract mixin class $LaunchOverlayCopyWith<$Res> implements $OverlayEventCopyWith<$Res> {
+  factory $LaunchOverlayCopyWith(LaunchOverlay value, $Res Function(LaunchOverlay) _then) = _$LaunchOverlayCopyWithImpl;
 @useResult
 $Res call({
- OverlayConfig config
+ OverlayConfig? config
 });
 
 
-$OverlayConfigCopyWith<$Res> get config;
+$OverlayConfigCopyWith<$Res>? get config;
 
 }
 /// @nodoc
-class __$InitConfigCopyWithImpl<$Res>
-    implements _$InitConfigCopyWith<$Res> {
-  __$InitConfigCopyWithImpl(this._self, this._then);
+class _$LaunchOverlayCopyWithImpl<$Res>
+    implements $LaunchOverlayCopyWith<$Res> {
+  _$LaunchOverlayCopyWithImpl(this._self, this._then);
 
-  final _InitConfig _self;
-  final $Res Function(_InitConfig) _then;
+  final LaunchOverlay _self;
+  final $Res Function(LaunchOverlay) _then;
 
 /// Create a copy of OverlayEvent
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') $Res call({Object? config = null,}) {
-  return _then(_InitConfig(
-null == config ? _self.config : config // ignore: cast_nullable_to_non_nullable
-as OverlayConfig,
+@pragma('vm:prefer-inline') $Res call({Object? config = freezed,}) {
+  return _then(LaunchOverlay(
+config: freezed == config ? _self.config : config // ignore: cast_nullable_to_non_nullable
+as OverlayConfig?,
   ));
 }
 
@@ -256,9 +256,12 @@ as OverlayConfig,
 /// with the given fields replaced by the non-null parameter values.
 @override
 @pragma('vm:prefer-inline')
-$OverlayConfigCopyWith<$Res> get config {
-  
-  return $OverlayConfigCopyWith<$Res>(_self.config, (value) {
+$OverlayConfigCopyWith<$Res>? get config {
+    if (_self.config == null) {
+    return null;
+  }
+
+  return $OverlayConfigCopyWith<$Res>(_self.config!, (value) {
     return _then(_self.copyWith(config: value));
   });
 }
@@ -267,23 +270,23 @@ $OverlayConfigCopyWith<$Res> get config {
 /// @nodoc
 
 
-class _UpdateConfig implements OverlayEvent {
-  const _UpdateConfig(this.config);
+class UpdateOverlay implements OverlayEvent {
+  const UpdateOverlay({this.config});
   
 
- final  OverlayConfig config;
+ final  OverlayConfig? config;
 
 /// Create a copy of OverlayEvent
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
-_$UpdateConfigCopyWith<_UpdateConfig> get copyWith => __$UpdateConfigCopyWithImpl<_UpdateConfig>(this, _$identity);
+$UpdateOverlayCopyWith<UpdateOverlay> get copyWith => _$UpdateOverlayCopyWithImpl<UpdateOverlay>(this, _$identity);
 
 
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _UpdateConfig&&(identical(other.config, config) || other.config == config));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is UpdateOverlay&&(identical(other.config, config) || other.config == config));
 }
 
 
@@ -292,38 +295,38 @@ int get hashCode => Object.hash(runtimeType,config);
 
 @override
 String toString() {
-  return 'OverlayEvent.updateConfig(config: $config)';
+  return 'OverlayEvent.updateOverlay(config: $config)';
 }
 
 
 }
 
 /// @nodoc
-abstract mixin class _$UpdateConfigCopyWith<$Res> implements $OverlayEventCopyWith<$Res> {
-  factory _$UpdateConfigCopyWith(_UpdateConfig value, $Res Function(_UpdateConfig) _then) = __$UpdateConfigCopyWithImpl;
+abstract mixin class $UpdateOverlayCopyWith<$Res> implements $OverlayEventCopyWith<$Res> {
+  factory $UpdateOverlayCopyWith(UpdateOverlay value, $Res Function(UpdateOverlay) _then) = _$UpdateOverlayCopyWithImpl;
 @useResult
 $Res call({
- OverlayConfig config
+ OverlayConfig? config
 });
 
 
-$OverlayConfigCopyWith<$Res> get config;
+$OverlayConfigCopyWith<$Res>? get config;
 
 }
 /// @nodoc
-class __$UpdateConfigCopyWithImpl<$Res>
-    implements _$UpdateConfigCopyWith<$Res> {
-  __$UpdateConfigCopyWithImpl(this._self, this._then);
+class _$UpdateOverlayCopyWithImpl<$Res>
+    implements $UpdateOverlayCopyWith<$Res> {
+  _$UpdateOverlayCopyWithImpl(this._self, this._then);
 
-  final _UpdateConfig _self;
-  final $Res Function(_UpdateConfig) _then;
+  final UpdateOverlay _self;
+  final $Res Function(UpdateOverlay) _then;
 
 /// Create a copy of OverlayEvent
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') $Res call({Object? config = null,}) {
-  return _then(_UpdateConfig(
-null == config ? _self.config : config // ignore: cast_nullable_to_non_nullable
-as OverlayConfig,
+@pragma('vm:prefer-inline') $Res call({Object? config = freezed,}) {
+  return _then(UpdateOverlay(
+config: freezed == config ? _self.config : config // ignore: cast_nullable_to_non_nullable
+as OverlayConfig?,
   ));
 }
 
@@ -331,9 +334,12 @@ as OverlayConfig,
 /// with the given fields replaced by the non-null parameter values.
 @override
 @pragma('vm:prefer-inline')
-$OverlayConfigCopyWith<$Res> get config {
-  
-  return $OverlayConfigCopyWith<$Res>(_self.config, (value) {
+$OverlayConfigCopyWith<$Res>? get config {
+    if (_self.config == null) {
+    return null;
+  }
+
+  return $OverlayConfigCopyWith<$Res>(_self.config!, (value) {
     return _then(_self.copyWith(config: value));
   });
 }
@@ -342,8 +348,8 @@ $OverlayConfigCopyWith<$Res> get config {
 /// @nodoc
 
 
-class _ShowOverlay implements OverlayEvent {
-  const _ShowOverlay();
+class ShowOverlay implements OverlayEvent {
+  const ShowOverlay();
   
 
 
@@ -353,7 +359,7 @@ class _ShowOverlay implements OverlayEvent {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ShowOverlay);
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ShowOverlay);
 }
 
 
@@ -374,8 +380,8 @@ String toString() {
 /// @nodoc
 
 
-class _ShowListFeatureOverlay implements OverlayEvent {
-  const _ShowListFeatureOverlay();
+class SwitchFeatureOverlay implements OverlayEvent {
+  const SwitchFeatureOverlay();
   
 
 
@@ -385,7 +391,7 @@ class _ShowListFeatureOverlay implements OverlayEvent {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ShowListFeatureOverlay);
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is SwitchFeatureOverlay);
 }
 
 
@@ -394,7 +400,7 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'OverlayEvent.showListFeatureOverlay()';
+  return 'OverlayEvent.switchFeatureOverlay()';
 }
 
 

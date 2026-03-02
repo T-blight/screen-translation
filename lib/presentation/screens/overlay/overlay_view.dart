@@ -1,58 +1,75 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_overlay_window/flutter_overlay_window.dart';
+import 'package:flutter/material.dart' hide OverlayState;
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_overlay_window/src/models/overlay_position.dart';
+import 'package:tombozi/features/domain/entities/overlay_config.dart';
+import 'package:tombozi/presentation/bloc/overlay/overlay_state.dart' show OverlayState, OverlayVisibility, OverlayFormType;
 
-import '../../../DI/injection.dart';
-import '../../viewmodels/overlay_viewmodel.dart';
+import '../../bloc/overlay/overlay_bloc.dart';
+import '../../bloc/overlay/overlay_event.dart';
+import '../../bloc/overlay/overlay_state.dart' show OverlayState, OverlayVisibility;
 
-class OverlayView extends StatefulWidget {
+class OverlayView extends StatelessWidget {
   const OverlayView({super.key});
-
-  @override
-  State<OverlayView> createState() => _OverlayViewState();
-}
-
-class _OverlayViewState extends State<OverlayView> {
-  final overlay = sl<OverlayViewModel>();
-  @override
-  void initState() {
-    super.initState();
-    FlutterOverlayWindow.overlayListener.listen((event) {
-      setState(() {
-      });
-    });
-  }
   @override
   Widget build(BuildContext context) {
+    return BlocBuilder<OverlayBloc, OverlayState>(
+      builder: (context, state) {
+        switch (state.formType) {
+          case OverlayFormType.feature:
+            return _widgetFeatureOverlay(context,state);
+          case OverlayFormType.action:
+            // TODO: Handle this case.
+            throw UnimplementedError();
+          case OverlayFormType.circle:
+            return _widgetCircleOverlay(context);
+        }
+      },
+    );
+  }
+
+  Widget _widgetCircleOverlay(BuildContext context) {
     return Material(
-      color: Colors.transparent,
+      color: Colors.white,
       child: GestureDetector(
         onTap: () {
-          debugPrint("Single tap");
-        },
-
-        onDoubleTap: () {
-          debugPrint("Double tap");
-        },
-
-        onLongPress: () {
-          debugPrint("Long press");
-        },
-
-        onPanUpdate: (details) {
-          debugPrint("Dragging: ${details.delta}");
+          context.read<OverlayBloc>().add(SwitchFeatureOverlay());
         },
         child: Container(
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
             shape: BoxShape.circle,
-            color: Colors.black,
-            image: const DecorationImage(
-              image: NetworkImage('https://flutter.github.io/assets-for-api-docs/assets/widgets/owl-2.jpg'),
+            image: DecorationImage(
+              image: NetworkImage(
+                'https://flutter.github.io/assets-for-api-docs/assets/widgets/owl-2.jpg',
+              ),
               fit: BoxFit.cover,
             ),
           ),
-
         ),
       ),
+    );
+  }
+  Widget _widgetFeatureOverlay(BuildContext context, OverlayState overlayState){
+    return Material(
+        color: Colors.transparent,
+      child: Stack(
+        children:[
+          GestureDetector(
+            onTap:() => {
+              context.read<OverlayBloc>().add(ShowOverlay()),
+            }
+          ),
+          Positioned(
+            top: overlayState.overlayPosition?.x.toDouble(),
+            right: overlayState.overlayPosition?.y.toDouble(),
+            child: Container(
+              width: 400,
+              color: Colors.white,
+              height: 300,
+            ),
+          )
+
+        ]
+      )
     );
   }
 }

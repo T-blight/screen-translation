@@ -14,30 +14,78 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$OverlayState {
 
-
+ OverlayVisibility get visibility; OverlayFormType get formType; OverlayStyle get style; OverlayUnion get overlayUnion; OverlayConfig? get overlayConfig; OverlayPosition? get overlayPosition;
+/// Create a copy of OverlayState
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$OverlayStateCopyWith<OverlayState> get copyWith => _$OverlayStateCopyWithImpl<OverlayState>(this as OverlayState, _$identity);
 
 
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is OverlayState);
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is OverlayState&&(identical(other.visibility, visibility) || other.visibility == visibility)&&(identical(other.formType, formType) || other.formType == formType)&&(identical(other.style, style) || other.style == style)&&(identical(other.overlayUnion, overlayUnion) || other.overlayUnion == overlayUnion)&&(identical(other.overlayConfig, overlayConfig) || other.overlayConfig == overlayConfig)&&(identical(other.overlayPosition, overlayPosition) || other.overlayPosition == overlayPosition));
 }
 
 
 @override
-int get hashCode => runtimeType.hashCode;
+int get hashCode => Object.hash(runtimeType,visibility,formType,style,overlayUnion,overlayConfig,overlayPosition);
 
 @override
 String toString() {
-  return 'OverlayState()';
+  return 'OverlayState(visibility: $visibility, formType: $formType, style: $style, overlayUnion: $overlayUnion, overlayConfig: $overlayConfig, overlayPosition: $overlayPosition)';
 }
 
 
 }
 
 /// @nodoc
-class $OverlayStateCopyWith<$Res>  {
-$OverlayStateCopyWith(OverlayState _, $Res Function(OverlayState) __);
+abstract mixin class $OverlayStateCopyWith<$Res>  {
+  factory $OverlayStateCopyWith(OverlayState value, $Res Function(OverlayState) _then) = _$OverlayStateCopyWithImpl;
+@useResult
+$Res call({
+ OverlayVisibility visibility, OverlayFormType formType, OverlayStyle style, OverlayUnion overlayUnion, OverlayConfig? overlayConfig, OverlayPosition? overlayPosition
+});
+
+
+$OverlayConfigCopyWith<$Res>? get overlayConfig;
+
+}
+/// @nodoc
+class _$OverlayStateCopyWithImpl<$Res>
+    implements $OverlayStateCopyWith<$Res> {
+  _$OverlayStateCopyWithImpl(this._self, this._then);
+
+  final OverlayState _self;
+  final $Res Function(OverlayState) _then;
+
+/// Create a copy of OverlayState
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? visibility = null,Object? formType = null,Object? style = null,Object? overlayUnion = null,Object? overlayConfig = freezed,Object? overlayPosition = freezed,}) {
+  return _then(_self.copyWith(
+visibility: null == visibility ? _self.visibility : visibility // ignore: cast_nullable_to_non_nullable
+as OverlayVisibility,formType: null == formType ? _self.formType : formType // ignore: cast_nullable_to_non_nullable
+as OverlayFormType,style: null == style ? _self.style : style // ignore: cast_nullable_to_non_nullable
+as OverlayStyle,overlayUnion: null == overlayUnion ? _self.overlayUnion : overlayUnion // ignore: cast_nullable_to_non_nullable
+as OverlayUnion,overlayConfig: freezed == overlayConfig ? _self.overlayConfig : overlayConfig // ignore: cast_nullable_to_non_nullable
+as OverlayConfig?,overlayPosition: freezed == overlayPosition ? _self.overlayPosition : overlayPosition // ignore: cast_nullable_to_non_nullable
+as OverlayPosition?,
+  ));
+}
+/// Create a copy of OverlayState
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$OverlayConfigCopyWith<$Res>? get overlayConfig {
+    if (_self.overlayConfig == null) {
+    return null;
+  }
+
+  return $OverlayConfigCopyWith<$Res>(_self.overlayConfig!, (value) {
+    return _then(_self.copyWith(overlayConfig: value));
+  });
+}
 }
 
 
@@ -55,13 +103,11 @@ extension OverlayStatePatterns on OverlayState {
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( _Visible value)?  visible,TResult Function( _Hidden value)?  hidden,TResult Function( _Close value)?  close,required TResult orElse(),}){
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _OverlayState value)?  $default,{required TResult orElse(),}){
 final _that = this;
 switch (_that) {
-case _Visible() when visible != null:
-return visible(_that);case _Hidden() when hidden != null:
-return hidden(_that);case _Close() when close != null:
-return close(_that);case _:
+case _OverlayState() when $default != null:
+return $default(_that);case _:
   return orElse();
 
 }
@@ -79,16 +125,11 @@ return close(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( _Visible value)  visible,required TResult Function( _Hidden value)  hidden,required TResult Function( _Close value)  close,}){
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _OverlayState value)  $default,){
 final _that = this;
 switch (_that) {
-case _Visible():
-return visible(_that);case _Hidden():
-return hidden(_that);case _Close():
-return close(_that);case _:
-  throw StateError('Unexpected subclass');
-
-}
+case _OverlayState():
+return $default(_that);}
 }
 /// A variant of `map` that fallback to returning `null`.
 ///
@@ -102,13 +143,11 @@ return close(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( _Visible value)?  visible,TResult? Function( _Hidden value)?  hidden,TResult? Function( _Close value)?  close,}){
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _OverlayState value)?  $default,){
 final _that = this;
 switch (_that) {
-case _Visible() when visible != null:
-return visible(_that);case _Hidden() when hidden != null:
-return hidden(_that);case _Close() when close != null:
-return close(_that);case _:
+case _OverlayState() when $default != null:
+return $default(_that);case _:
   return null;
 
 }
@@ -125,12 +164,10 @@ return close(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  visible,TResult Function()?  hidden,TResult Function()?  close,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( OverlayVisibility visibility,  OverlayFormType formType,  OverlayStyle style,  OverlayUnion overlayUnion,  OverlayConfig? overlayConfig,  OverlayPosition? overlayPosition)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
-case _Visible() when visible != null:
-return visible();case _Hidden() when hidden != null:
-return hidden();case _Close() when close != null:
-return close();case _:
+case _OverlayState() when $default != null:
+return $default(_that.visibility,_that.formType,_that.style,_that.overlayUnion,_that.overlayConfig,_that.overlayPosition);case _:
   return orElse();
 
 }
@@ -148,15 +185,10 @@ return close();case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  visible,required TResult Function()  hidden,required TResult Function()  close,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( OverlayVisibility visibility,  OverlayFormType formType,  OverlayStyle style,  OverlayUnion overlayUnion,  OverlayConfig? overlayConfig,  OverlayPosition? overlayPosition)  $default,) {final _that = this;
 switch (_that) {
-case _Visible():
-return visible();case _Hidden():
-return hidden();case _Close():
-return close();case _:
-  throw StateError('Unexpected subclass');
-
-}
+case _OverlayState():
+return $default(_that.visibility,_that.formType,_that.style,_that.overlayUnion,_that.overlayConfig,_that.overlayPosition);}
 }
 /// A variant of `when` that fallback to returning `null`
 ///
@@ -170,12 +202,10 @@ return close();case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  visible,TResult? Function()?  hidden,TResult? Function()?  close,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( OverlayVisibility visibility,  OverlayFormType formType,  OverlayStyle style,  OverlayUnion overlayUnion,  OverlayConfig? overlayConfig,  OverlayPosition? overlayPosition)?  $default,) {final _that = this;
 switch (_that) {
-case _Visible() when visible != null:
-return visible();case _Hidden() when hidden != null:
-return hidden();case _Close() when close != null:
-return close();case _:
+case _OverlayState() when $default != null:
+return $default(_that.visibility,_that.formType,_that.style,_that.overlayUnion,_that.overlayConfig,_that.overlayPosition);case _:
   return null;
 
 }
@@ -186,97 +216,89 @@ return close();case _:
 /// @nodoc
 
 
-class _Visible implements OverlayState {
-  const _Visible();
+class _OverlayState implements OverlayState {
+  const _OverlayState({this.visibility = OverlayVisibility.closed, this.formType = OverlayFormType.circle, this.style = OverlayStyle.standard, this.overlayUnion = OverlayUnion.loading, this.overlayConfig, this.overlayPosition});
   
 
+@override@JsonKey() final  OverlayVisibility visibility;
+@override@JsonKey() final  OverlayFormType formType;
+@override@JsonKey() final  OverlayStyle style;
+@override@JsonKey() final  OverlayUnion overlayUnion;
+@override final  OverlayConfig? overlayConfig;
+@override final  OverlayPosition? overlayPosition;
 
-
+/// Create a copy of OverlayState
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$OverlayStateCopyWith<_OverlayState> get copyWith => __$OverlayStateCopyWithImpl<_OverlayState>(this, _$identity);
 
 
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Visible);
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _OverlayState&&(identical(other.visibility, visibility) || other.visibility == visibility)&&(identical(other.formType, formType) || other.formType == formType)&&(identical(other.style, style) || other.style == style)&&(identical(other.overlayUnion, overlayUnion) || other.overlayUnion == overlayUnion)&&(identical(other.overlayConfig, overlayConfig) || other.overlayConfig == overlayConfig)&&(identical(other.overlayPosition, overlayPosition) || other.overlayPosition == overlayPosition));
 }
 
 
 @override
-int get hashCode => runtimeType.hashCode;
+int get hashCode => Object.hash(runtimeType,visibility,formType,style,overlayUnion,overlayConfig,overlayPosition);
 
 @override
 String toString() {
-  return 'OverlayState.visible()';
+  return 'OverlayState(visibility: $visibility, formType: $formType, style: $style, overlayUnion: $overlayUnion, overlayConfig: $overlayConfig, overlayPosition: $overlayPosition)';
 }
 
 
 }
-
-
-
 
 /// @nodoc
+abstract mixin class _$OverlayStateCopyWith<$Res> implements $OverlayStateCopyWith<$Res> {
+  factory _$OverlayStateCopyWith(_OverlayState value, $Res Function(_OverlayState) _then) = __$OverlayStateCopyWithImpl;
+@override @useResult
+$Res call({
+ OverlayVisibility visibility, OverlayFormType formType, OverlayStyle style, OverlayUnion overlayUnion, OverlayConfig? overlayConfig, OverlayPosition? overlayPosition
+});
 
 
-class _Hidden implements OverlayState {
-  const _Hidden();
-  
-
-
-
-
-
-
-@override
-bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Hidden);
-}
-
-
-@override
-int get hashCode => runtimeType.hashCode;
-
-@override
-String toString() {
-  return 'OverlayState.hidden()';
-}
-
+@override $OverlayConfigCopyWith<$Res>? get overlayConfig;
 
 }
-
-
-
-
 /// @nodoc
+class __$OverlayStateCopyWithImpl<$Res>
+    implements _$OverlayStateCopyWith<$Res> {
+  __$OverlayStateCopyWithImpl(this._self, this._then);
 
+  final _OverlayState _self;
+  final $Res Function(_OverlayState) _then;
 
-class _Close implements OverlayState {
-  const _Close();
-  
-
-
-
-
-
-
-@override
-bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Close);
+/// Create a copy of OverlayState
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? visibility = null,Object? formType = null,Object? style = null,Object? overlayUnion = null,Object? overlayConfig = freezed,Object? overlayPosition = freezed,}) {
+  return _then(_OverlayState(
+visibility: null == visibility ? _self.visibility : visibility // ignore: cast_nullable_to_non_nullable
+as OverlayVisibility,formType: null == formType ? _self.formType : formType // ignore: cast_nullable_to_non_nullable
+as OverlayFormType,style: null == style ? _self.style : style // ignore: cast_nullable_to_non_nullable
+as OverlayStyle,overlayUnion: null == overlayUnion ? _self.overlayUnion : overlayUnion // ignore: cast_nullable_to_non_nullable
+as OverlayUnion,overlayConfig: freezed == overlayConfig ? _self.overlayConfig : overlayConfig // ignore: cast_nullable_to_non_nullable
+as OverlayConfig?,overlayPosition: freezed == overlayPosition ? _self.overlayPosition : overlayPosition // ignore: cast_nullable_to_non_nullable
+as OverlayPosition?,
+  ));
 }
 
-
+/// Create a copy of OverlayState
+/// with the given fields replaced by the non-null parameter values.
 @override
-int get hashCode => runtimeType.hashCode;
+@pragma('vm:prefer-inline')
+$OverlayConfigCopyWith<$Res>? get overlayConfig {
+    if (_self.overlayConfig == null) {
+    return null;
+  }
 
-@override
-String toString() {
-  return 'OverlayState.close()';
+  return $OverlayConfigCopyWith<$Res>(_self.overlayConfig!, (value) {
+    return _then(_self.copyWith(overlayConfig: value));
+  });
 }
-
-
 }
-
-
-
 
 // dart format on

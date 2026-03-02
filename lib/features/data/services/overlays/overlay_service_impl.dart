@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter_overlay_window/flutter_overlay_window.dart';
 import '../../../domain/entities/overlay_config.dart';
 import '../../../domain/services/overlay_service.dart';
@@ -49,5 +48,13 @@ class OverlayServiceImpl implements OverlayService {
   Future<void> hiddenOverlay() {
     // TODO: implement hiddenOverlay
     throw UnimplementedError();
+  }
+
+  @override
+  OverlayConfig? get config => _config;
+
+  @override
+  Future<void> resetOverlay() async {
+    _config = _config?.copyWith(scaleFactor:0.12);
   }
 }
