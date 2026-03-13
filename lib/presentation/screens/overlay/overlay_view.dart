@@ -1,22 +1,21 @@
 import 'package:flutter/material.dart' hide OverlayState;
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_overlay_window/src/models/overlay_position.dart';
-import 'package:tombozi/features/domain/entities/overlay_config.dart';
-import 'package:tombozi/presentation/bloc/overlay/overlay_state.dart' show OverlayState, OverlayVisibility, OverlayFormType;
-
+import 'package:tombozi/presentation/bloc/overlay/overlay_state.dart'
+    show OverlayState, OverlayVisibility, OverlayFormType;
 import '../../bloc/overlay/overlay_bloc.dart';
 import '../../bloc/overlay/overlay_event.dart';
-import '../../bloc/overlay/overlay_state.dart' show OverlayState, OverlayVisibility;
+import 'list_feature_overlay.dart';
 
 class OverlayView extends StatelessWidget {
   const OverlayView({super.key});
+
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<OverlayBloc, OverlayState>(
       builder: (context, state) {
         switch (state.formType) {
           case OverlayFormType.feature:
-            return _widgetFeatureOverlay(context,state);
+            return _widgetFeatureOverlay(context, state);
           case OverlayFormType.action:
             // TODO: Handle this case.
             throw UnimplementedError();
@@ -28,12 +27,14 @@ class OverlayView extends StatelessWidget {
   }
 
   Widget _widgetCircleOverlay(BuildContext context) {
+
     return Material(
       color: Colors.white,
       child: GestureDetector(
         onTap: () {
           context.read<OverlayBloc>().add(SwitchFeatureOverlay());
         },
+
         child: Container(
           decoration: const BoxDecoration(
             shape: BoxShape.circle,
@@ -48,31 +49,122 @@ class OverlayView extends StatelessWidget {
       ),
     );
   }
-  Widget _widgetFeatureOverlay(BuildContext context, OverlayState overlayState){
-    return Material(
-        color: Colors.transparent,
-      child: Stack(
-        children:[
-          GestureDetector(
-            onTap:() => {
-              context.read<OverlayBloc>().add(ShowOverlay()),
-            }
-          ),
-          Positioned(
-            top: overlayState.overlayPosition?.x.toDouble(),
-            right: overlayState.overlayPosition?.y.toDouble(),
-            child: Container(
-              width: 400,
-              color: Colors.white,
-              height: 300,
-            ),
-          )
 
-        ]
-      )
+  Widget _widgetFeatureOverlay(
+    BuildContext context,
+    OverlayState overlayState,
+  ) {
+
+    final y = ((-overlayState.overlayConfig!.heightSize + 100) / 2);
+    final localX =
+        overlayState.overlayConfig!.widthSize -
+        overlayState.overlayConfig!.calculatedRectangleSize;
+    final x = overlayState.overlayPosition?.x.clamp(0.0, localX);
+
+    Widget featureList(context){
+      return GridView.count(
+        primary: false,
+        crossAxisCount: 2,
+        padding: const EdgeInsets.all(12),
+        crossAxisSpacing: 10,
+        mainAxisSpacing: 10,
+        children: <Widget>[
+            ...ListFeatureTranslate.values.map((e) {
+              final feature = itemInOverlay[e]!;
+              return FilledButton(
+                style: FilledButton.styleFrom(
+                  backgroundColor: feature.color,
+                  padding: EdgeInsets.zero,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                ),
+                onPressed: () => feature.onClick,
+                child: Icon(feature.icon),
+              );
+            })
+        ],
+      );
+    }
+
+
+    return Material(
+      color: Colors.transparent,
+      child: Stack(
+        children: [
+          GestureDetector(
+            onTap: () => {context.read<OverlayBloc>().add(ShowOverlay())},
+            child: Container(color: Colors.transparent),
+          ),
+          BlocSelector<OverlayBloc, OverlayState,OverlayFormType>(
+            selector: (state) => state.formType,
+            builder: (context, state) {
+              return Positioned(
+                top: 400,
+                right: x,
+                height:
+                    overlayState.overlayConfig!.calculatedRectangleSize * 2.3,
+                width: overlayState.overlayConfig!.calculatedRectangleSize,
+                child: Row(
+                  textDirection: x == 0 ? TextDirection.ltr : TextDirection.rtl,
+                  children: [
+                    // Expanded(
+                    //   flex: 3,
+                    //   child: Padding(
+                    //     padding: EdgeInsets.symmetric(vertical: 10),
+                    //     child: Column(
+                    //       children: [
+                    //         Expanded(
+                    //           child: Column(
+                    //             children: [
+                    //               Expanded(
+                    //                 child: Container(
+                    //                   decoration: BoxDecoration(
+                    //                     color: Colors.green,
+                    //                     borderRadius: BorderRadius.circular(20),
+                    //                   ),
+                    //                 ),
+                    //               ),
+                    //               SizedBox(height: 10),
+                    //               Expanded(
+                    //                 child: Container(
+                    //                   decoration: BoxDecoration(
+                    //                     color: Colors.green,
+                    //                     borderRadius: BorderRadius.circular(20),
+                    //                   ),
+                    //                 ),
+                    //               ),
+                    //             ],
+                    //           ),
+                    //         ),
+                    //         Expanded(child: SizedBox()),
+                    //       ],
+                    //     ),
+                    //   ),
+                    // ),
+                    // Expanded(flex: 1, child: SizedBox()),
+                    Expanded(
+                      flex: 9,
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: Colors.red,
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        child: featureList(context),
+                      ),
+                    ),
+                  ],
+                ),
+              );
+            },
+          ),
+        ],
+      ),
     );
   }
 }
+
+
 
 ///===========================================================\\\\
 ///

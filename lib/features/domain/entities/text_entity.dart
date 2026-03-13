@@ -1,3 +1,4 @@
+
 class TextEntity {
   final String id;
   final String textSource;

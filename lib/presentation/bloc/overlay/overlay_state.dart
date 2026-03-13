@@ -9,6 +9,7 @@ enum OverlayStyle{standard , customer}
 enum OverlayUnion{loading,error,success}
 @freezed
 sealed class OverlayState with _$OverlayState {
+  const OverlayState._();
 
   const factory OverlayState({
     @Default(OverlayVisibility.closed)
@@ -26,6 +27,5 @@ sealed class OverlayState with _$OverlayState {
     OverlayConfig? overlayConfig,
 
     OverlayPosition? overlayPosition,
-
   }) = _OverlayState;
 }

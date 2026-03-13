@@ -55,14 +55,15 @@ extension OverlayEventPatterns on OverlayEvent {
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( LaunchOverlay value)?  launchOverlay,TResult Function( UpdateOverlay value)?  updateOverlay,TResult Function( ShowOverlay value)?  showOverlay,TResult Function( SwitchFeatureOverlay value)?  switchFeatureOverlay,required TResult orElse(),}){
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( LaunchOverlay value)?  launchOverlay,TResult Function( UpdateOverlay value)?  updateOverlay,TResult Function( ShowOverlay value)?  showOverlay,TResult Function( SwitchFeatureOverlay value)?  switchFeatureOverlay,TResult Function( CheckBehaviourOverlay value)?  checkBehaviourOverlay,required TResult orElse(),}){
 final _that = this;
 switch (_that) {
 case LaunchOverlay() when launchOverlay != null:
 return launchOverlay(_that);case UpdateOverlay() when updateOverlay != null:
 return updateOverlay(_that);case ShowOverlay() when showOverlay != null:
 return showOverlay(_that);case SwitchFeatureOverlay() when switchFeatureOverlay != null:
-return switchFeatureOverlay(_that);case _:
+return switchFeatureOverlay(_that);case CheckBehaviourOverlay() when checkBehaviourOverlay != null:
+return checkBehaviourOverlay(_that);case _:
   return orElse();
 
 }
@@ -80,14 +81,15 @@ return switchFeatureOverlay(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( LaunchOverlay value)  launchOverlay,required TResult Function( UpdateOverlay value)  updateOverlay,required TResult Function( ShowOverlay value)  showOverlay,required TResult Function( SwitchFeatureOverlay value)  switchFeatureOverlay,}){
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( LaunchOverlay value)  launchOverlay,required TResult Function( UpdateOverlay value)  updateOverlay,required TResult Function( ShowOverlay value)  showOverlay,required TResult Function( SwitchFeatureOverlay value)  switchFeatureOverlay,required TResult Function( CheckBehaviourOverlay value)  checkBehaviourOverlay,}){
 final _that = this;
 switch (_that) {
 case LaunchOverlay():
 return launchOverlay(_that);case UpdateOverlay():
 return updateOverlay(_that);case ShowOverlay():
 return showOverlay(_that);case SwitchFeatureOverlay():
-return switchFeatureOverlay(_that);case _:
+return switchFeatureOverlay(_that);case CheckBehaviourOverlay():
+return checkBehaviourOverlay(_that);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -104,14 +106,15 @@ return switchFeatureOverlay(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( LaunchOverlay value)?  launchOverlay,TResult? Function( UpdateOverlay value)?  updateOverlay,TResult? Function( ShowOverlay value)?  showOverlay,TResult? Function( SwitchFeatureOverlay value)?  switchFeatureOverlay,}){
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( LaunchOverlay value)?  launchOverlay,TResult? Function( UpdateOverlay value)?  updateOverlay,TResult? Function( ShowOverlay value)?  showOverlay,TResult? Function( SwitchFeatureOverlay value)?  switchFeatureOverlay,TResult? Function( CheckBehaviourOverlay value)?  checkBehaviourOverlay,}){
 final _that = this;
 switch (_that) {
 case LaunchOverlay() when launchOverlay != null:
 return launchOverlay(_that);case UpdateOverlay() when updateOverlay != null:
 return updateOverlay(_that);case ShowOverlay() when showOverlay != null:
 return showOverlay(_that);case SwitchFeatureOverlay() when switchFeatureOverlay != null:
-return switchFeatureOverlay(_that);case _:
+return switchFeatureOverlay(_that);case CheckBehaviourOverlay() when checkBehaviourOverlay != null:
+return checkBehaviourOverlay(_that);case _:
   return null;
 
 }
@@ -128,13 +131,14 @@ return switchFeatureOverlay(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( OverlayConfig? config)?  launchOverlay,TResult Function( OverlayConfig? config)?  updateOverlay,TResult Function()?  showOverlay,TResult Function()?  switchFeatureOverlay,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( OverlayConfig? config)?  launchOverlay,TResult Function( OverlayConfig? config)?  updateOverlay,TResult Function()?  showOverlay,TResult Function()?  switchFeatureOverlay,TResult Function()?  checkBehaviourOverlay,required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case LaunchOverlay() when launchOverlay != null:
 return launchOverlay(_that.config);case UpdateOverlay() when updateOverlay != null:
 return updateOverlay(_that.config);case ShowOverlay() when showOverlay != null:
 return showOverlay();case SwitchFeatureOverlay() when switchFeatureOverlay != null:
-return switchFeatureOverlay();case _:
+return switchFeatureOverlay();case CheckBehaviourOverlay() when checkBehaviourOverlay != null:
+return checkBehaviourOverlay();case _:
   return orElse();
 
 }
@@ -152,13 +156,14 @@ return switchFeatureOverlay();case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( OverlayConfig? config)  launchOverlay,required TResult Function( OverlayConfig? config)  updateOverlay,required TResult Function()  showOverlay,required TResult Function()  switchFeatureOverlay,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( OverlayConfig? config)  launchOverlay,required TResult Function( OverlayConfig? config)  updateOverlay,required TResult Function()  showOverlay,required TResult Function()  switchFeatureOverlay,required TResult Function()  checkBehaviourOverlay,}) {final _that = this;
 switch (_that) {
 case LaunchOverlay():
 return launchOverlay(_that.config);case UpdateOverlay():
 return updateOverlay(_that.config);case ShowOverlay():
 return showOverlay();case SwitchFeatureOverlay():
-return switchFeatureOverlay();case _:
+return switchFeatureOverlay();case CheckBehaviourOverlay():
+return checkBehaviourOverlay();case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -175,13 +180,14 @@ return switchFeatureOverlay();case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( OverlayConfig? config)?  launchOverlay,TResult? Function( OverlayConfig? config)?  updateOverlay,TResult? Function()?  showOverlay,TResult? Function()?  switchFeatureOverlay,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( OverlayConfig? config)?  launchOverlay,TResult? Function( OverlayConfig? config)?  updateOverlay,TResult? Function()?  showOverlay,TResult? Function()?  switchFeatureOverlay,TResult? Function()?  checkBehaviourOverlay,}) {final _that = this;
 switch (_that) {
 case LaunchOverlay() when launchOverlay != null:
 return launchOverlay(_that.config);case UpdateOverlay() when updateOverlay != null:
 return updateOverlay(_that.config);case ShowOverlay() when showOverlay != null:
 return showOverlay();case SwitchFeatureOverlay() when switchFeatureOverlay != null:
-return switchFeatureOverlay();case _:
+return switchFeatureOverlay();case CheckBehaviourOverlay() when checkBehaviourOverlay != null:
+return checkBehaviourOverlay();case _:
   return null;
 
 }
@@ -401,6 +407,38 @@ int get hashCode => runtimeType.hashCode;
 @override
 String toString() {
   return 'OverlayEvent.switchFeatureOverlay()';
+}
+
+
+}
+
+
+
+
+/// @nodoc
+
+
+class CheckBehaviourOverlay implements OverlayEvent {
+  const CheckBehaviourOverlay();
+  
+
+
+
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is CheckBehaviourOverlay);
+}
+
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString() {
+  return 'OverlayEvent.checkBehaviourOverlay()';
 }
 
 

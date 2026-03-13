@@ -1,6 +1,9 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:flutter_overlay_window/flutter_overlay_window.dart';
 import 'package:tombozi/l10n/app_localizations.dart';
 import 'package:tombozi/presentation/bloc/overlay/overlay_bloc.dart';
 import 'package:tombozi/presentation/bloc/overlay/overlay_event.dart';
@@ -11,6 +14,7 @@ import 'DI/injection.dart';
 import 'features/domain/entities/overlay_config.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
   runApp( MyApp());
 }
 
@@ -20,12 +24,20 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final lightGray = const Color(0xFFF0F0F0);
-    final screenWidth = View.of(context).physicalSize.width /
-        View.of(context).devicePixelRatio;
-    final devicePixelRatio = View.of(context).devicePixelRatio;
-    final screenHeight =
-        View.of(context).physicalSize.height / View.of(context).devicePixelRatio;
+    final screenWidth = MediaQuery.of(context).size.width;
+    final devicePixelRatio = MediaQuery.of(context).devicePixelRatio;
+    final screenHeight = MediaQuery.of(context).size.height;
+    debugPrint('Heigth:  ${screenHeight}----------${screenWidth}---------------------------------------------');
 
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
+      await FlutterOverlayWindow.shareData(
+        jsonEncode({
+          "w": screenWidth,
+          "h": screenHeight,
+          "dpr": devicePixelRatio,
+        }),
+      );
+    });
     return MultiBlocProvider(
       providers: [
         BlocProvider<OverlayBloc>(
@@ -39,6 +51,7 @@ class MyApp extends StatelessWidget {
         )
       ],
       child:  MaterialApp(
+        color: Colors.white,
         title: 'Flutter Demo',
         supportedLocales: const [
           Locale('en'),
@@ -71,41 +84,62 @@ class MyApp extends StatelessWidget {
 }
 
 @pragma("vm:entry-point")
-void overlayMain() async {
+void overlayMain() {
   WidgetsFlutterBinding.ensureInitialized();
-  runApp(const OverlayRoot());
+  runApp(OverlayRoot());
 }
-class OverlayRoot extends StatelessWidget {
+
+class OverlayRoot extends StatefulWidget {
   const OverlayRoot({super.key});
 
   @override
+  State<OverlayRoot> createState() => _OverlayRootState();
+}
+
+class _OverlayRootState extends State<OverlayRoot> {
+
+  double? screenWidth;
+  double? screenHeight;
+  double? devicePixelRatio;
+
+  @override
+  void initState() {
+    super.initState();
+
+    FlutterOverlayWindow.overlayListener.listen((event) {
+      final data = jsonDecode(event);
+
+      setState(() {
+        screenWidth = (data["w"] as num).toDouble();
+        screenHeight = (data["h"] as num).toDouble();
+        devicePixelRatio = (data["dpr"] as num).toDouble();
+      });
+
+      debugPrint("Height received: $screenWidth,$screenHeight");
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
+    if (screenWidth == null) {
+      return const SizedBox();
+    }
+
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-
-      home: Builder(
-        builder: (context) {
-          final screenWidth = View.of(context).physicalSize.width /
-              View.of(context).devicePixelRatio;
-          final devicePixelRatio = View.of(context).devicePixelRatio;
-          final screenHeight =
-              View.of(context).physicalSize.height / View.of(context).devicePixelRatio;
-          return BlocProvider(
-            create: (_) => OverlayBloc(
-              OverlayConfig(
-                devicePixelRatio: devicePixelRatio,
-                widthSize: screenWidth,
-                heightSize: screenHeight,
-              ),
-            ),
-            child: const OverlayView(),
-          );
-        },
+      home: BlocProvider(
+        create: (_) => OverlayBloc(
+          OverlayConfig(
+            devicePixelRatio: devicePixelRatio!,
+            widthSize: screenWidth!,
+            heightSize: screenHeight!,
+          ),
+        ),
+        child: const OverlayView(),
       ),
     );
   }
 }
-
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});

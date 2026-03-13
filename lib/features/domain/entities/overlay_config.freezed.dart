@@ -14,7 +14,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$OverlayConfig {
 
- double get devicePixelRatio; double get scaleFactor; double get widthSize; double get heightSize;
+ double get devicePixelRatio; double get scaleFactor; double get scaleRectangle; double get widthSize; double get heightSize;
 /// Create a copy of OverlayConfig
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -25,16 +25,16 @@ $OverlayConfigCopyWith<OverlayConfig> get copyWith => _$OverlayConfigCopyWithImp
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is OverlayConfig&&(identical(other.devicePixelRatio, devicePixelRatio) || other.devicePixelRatio == devicePixelRatio)&&(identical(other.scaleFactor, scaleFactor) || other.scaleFactor == scaleFactor)&&(identical(other.widthSize, widthSize) || other.widthSize == widthSize)&&(identical(other.heightSize, heightSize) || other.heightSize == heightSize));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is OverlayConfig&&(identical(other.devicePixelRatio, devicePixelRatio) || other.devicePixelRatio == devicePixelRatio)&&(identical(other.scaleFactor, scaleFactor) || other.scaleFactor == scaleFactor)&&(identical(other.scaleRectangle, scaleRectangle) || other.scaleRectangle == scaleRectangle)&&(identical(other.widthSize, widthSize) || other.widthSize == widthSize)&&(identical(other.heightSize, heightSize) || other.heightSize == heightSize));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,devicePixelRatio,scaleFactor,widthSize,heightSize);
+int get hashCode => Object.hash(runtimeType,devicePixelRatio,scaleFactor,scaleRectangle,widthSize,heightSize);
 
 @override
 String toString() {
-  return 'OverlayConfig(devicePixelRatio: $devicePixelRatio, scaleFactor: $scaleFactor, widthSize: $widthSize, heightSize: $heightSize)';
+  return 'OverlayConfig(devicePixelRatio: $devicePixelRatio, scaleFactor: $scaleFactor, scaleRectangle: $scaleRectangle, widthSize: $widthSize, heightSize: $heightSize)';
 }
 
 
@@ -45,7 +45,7 @@ abstract mixin class $OverlayConfigCopyWith<$Res>  {
   factory $OverlayConfigCopyWith(OverlayConfig value, $Res Function(OverlayConfig) _then) = _$OverlayConfigCopyWithImpl;
 @useResult
 $Res call({
- double devicePixelRatio, double scaleFactor, double widthSize, double heightSize
+ double devicePixelRatio, double scaleFactor, double scaleRectangle, double widthSize, double heightSize
 });
 
 
@@ -62,10 +62,11 @@ class _$OverlayConfigCopyWithImpl<$Res>
 
 /// Create a copy of OverlayConfig
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? devicePixelRatio = null,Object? scaleFactor = null,Object? widthSize = null,Object? heightSize = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? devicePixelRatio = null,Object? scaleFactor = null,Object? scaleRectangle = null,Object? widthSize = null,Object? heightSize = null,}) {
   return _then(_self.copyWith(
 devicePixelRatio: null == devicePixelRatio ? _self.devicePixelRatio : devicePixelRatio // ignore: cast_nullable_to_non_nullable
 as double,scaleFactor: null == scaleFactor ? _self.scaleFactor : scaleFactor // ignore: cast_nullable_to_non_nullable
+as double,scaleRectangle: null == scaleRectangle ? _self.scaleRectangle : scaleRectangle // ignore: cast_nullable_to_non_nullable
 as double,widthSize: null == widthSize ? _self.widthSize : widthSize // ignore: cast_nullable_to_non_nullable
 as double,heightSize: null == heightSize ? _self.heightSize : heightSize // ignore: cast_nullable_to_non_nullable
 as double,
@@ -150,10 +151,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( double devicePixelRatio,  double scaleFactor,  double widthSize,  double heightSize)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( double devicePixelRatio,  double scaleFactor,  double scaleRectangle,  double widthSize,  double heightSize)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _OverlayConfig() when $default != null:
-return $default(_that.devicePixelRatio,_that.scaleFactor,_that.widthSize,_that.heightSize);case _:
+return $default(_that.devicePixelRatio,_that.scaleFactor,_that.scaleRectangle,_that.widthSize,_that.heightSize);case _:
   return orElse();
 
 }
@@ -171,10 +172,10 @@ return $default(_that.devicePixelRatio,_that.scaleFactor,_that.widthSize,_that.h
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( double devicePixelRatio,  double scaleFactor,  double widthSize,  double heightSize)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( double devicePixelRatio,  double scaleFactor,  double scaleRectangle,  double widthSize,  double heightSize)  $default,) {final _that = this;
 switch (_that) {
 case _OverlayConfig():
-return $default(_that.devicePixelRatio,_that.scaleFactor,_that.widthSize,_that.heightSize);}
+return $default(_that.devicePixelRatio,_that.scaleFactor,_that.scaleRectangle,_that.widthSize,_that.heightSize);}
 }
 /// A variant of `when` that fallback to returning `null`
 ///
@@ -188,10 +189,10 @@ return $default(_that.devicePixelRatio,_that.scaleFactor,_that.widthSize,_that.h
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( double devicePixelRatio,  double scaleFactor,  double widthSize,  double heightSize)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( double devicePixelRatio,  double scaleFactor,  double scaleRectangle,  double widthSize,  double heightSize)?  $default,) {final _that = this;
 switch (_that) {
 case _OverlayConfig() when $default != null:
-return $default(_that.devicePixelRatio,_that.scaleFactor,_that.widthSize,_that.heightSize);case _:
+return $default(_that.devicePixelRatio,_that.scaleFactor,_that.scaleRectangle,_that.widthSize,_that.heightSize);case _:
   return null;
 
 }
@@ -203,11 +204,12 @@ return $default(_that.devicePixelRatio,_that.scaleFactor,_that.widthSize,_that.h
 
 
 class _OverlayConfig extends OverlayConfig {
-  const _OverlayConfig({required this.devicePixelRatio, this.scaleFactor = 0.14, required this.widthSize, required this.heightSize}): super._();
+  const _OverlayConfig({required this.devicePixelRatio, this.scaleFactor = 0.14, this.scaleRectangle = 0.4, required this.widthSize, required this.heightSize}): super._();
   
 
 @override final  double devicePixelRatio;
 @override@JsonKey() final  double scaleFactor;
+@override@JsonKey() final  double scaleRectangle;
 @override final  double widthSize;
 @override final  double heightSize;
 
@@ -221,16 +223,16 @@ _$OverlayConfigCopyWith<_OverlayConfig> get copyWith => __$OverlayConfigCopyWith
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _OverlayConfig&&(identical(other.devicePixelRatio, devicePixelRatio) || other.devicePixelRatio == devicePixelRatio)&&(identical(other.scaleFactor, scaleFactor) || other.scaleFactor == scaleFactor)&&(identical(other.widthSize, widthSize) || other.widthSize == widthSize)&&(identical(other.heightSize, heightSize) || other.heightSize == heightSize));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _OverlayConfig&&(identical(other.devicePixelRatio, devicePixelRatio) || other.devicePixelRatio == devicePixelRatio)&&(identical(other.scaleFactor, scaleFactor) || other.scaleFactor == scaleFactor)&&(identical(other.scaleRectangle, scaleRectangle) || other.scaleRectangle == scaleRectangle)&&(identical(other.widthSize, widthSize) || other.widthSize == widthSize)&&(identical(other.heightSize, heightSize) || other.heightSize == heightSize));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,devicePixelRatio,scaleFactor,widthSize,heightSize);
+int get hashCode => Object.hash(runtimeType,devicePixelRatio,scaleFactor,scaleRectangle,widthSize,heightSize);
 
 @override
 String toString() {
-  return 'OverlayConfig(devicePixelRatio: $devicePixelRatio, scaleFactor: $scaleFactor, widthSize: $widthSize, heightSize: $heightSize)';
+  return 'OverlayConfig(devicePixelRatio: $devicePixelRatio, scaleFactor: $scaleFactor, scaleRectangle: $scaleRectangle, widthSize: $widthSize, heightSize: $heightSize)';
 }
 
 
@@ -241,7 +243,7 @@ abstract mixin class _$OverlayConfigCopyWith<$Res> implements $OverlayConfigCopy
   factory _$OverlayConfigCopyWith(_OverlayConfig value, $Res Function(_OverlayConfig) _then) = __$OverlayConfigCopyWithImpl;
 @override @useResult
 $Res call({
- double devicePixelRatio, double scaleFactor, double widthSize, double heightSize
+ double devicePixelRatio, double scaleFactor, double scaleRectangle, double widthSize, double heightSize
 });
 
 
@@ -258,10 +260,11 @@ class __$OverlayConfigCopyWithImpl<$Res>
 
 /// Create a copy of OverlayConfig
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? devicePixelRatio = null,Object? scaleFactor = null,Object? widthSize = null,Object? heightSize = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? devicePixelRatio = null,Object? scaleFactor = null,Object? scaleRectangle = null,Object? widthSize = null,Object? heightSize = null,}) {
   return _then(_OverlayConfig(
 devicePixelRatio: null == devicePixelRatio ? _self.devicePixelRatio : devicePixelRatio // ignore: cast_nullable_to_non_nullable
 as double,scaleFactor: null == scaleFactor ? _self.scaleFactor : scaleFactor // ignore: cast_nullable_to_non_nullable
+as double,scaleRectangle: null == scaleRectangle ? _self.scaleRectangle : scaleRectangle // ignore: cast_nullable_to_non_nullable
 as double,widthSize: null == widthSize ? _self.widthSize : widthSize // ignore: cast_nullable_to_non_nullable
 as double,heightSize: null == heightSize ? _self.heightSize : heightSize // ignore: cast_nullable_to_non_nullable
 as double,

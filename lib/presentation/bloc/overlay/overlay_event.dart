@@ -9,5 +9,5 @@ class OverlayEvent with _$OverlayEvent {
   const factory OverlayEvent.updateOverlay({OverlayConfig? config}) = UpdateOverlay;
   const factory OverlayEvent.showOverlay() = ShowOverlay;
   const factory OverlayEvent.switchFeatureOverlay() = SwitchFeatureOverlay;
-
+  const factory OverlayEvent.checkBehaviourOverlay() = CheckBehaviourOverlay;
 }

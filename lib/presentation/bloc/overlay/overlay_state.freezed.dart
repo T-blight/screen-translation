@@ -216,8 +216,8 @@ return $default(_that.visibility,_that.formType,_that.style,_that.overlayUnion,_
 /// @nodoc
 
 
-class _OverlayState implements OverlayState {
-  const _OverlayState({this.visibility = OverlayVisibility.closed, this.formType = OverlayFormType.circle, this.style = OverlayStyle.standard, this.overlayUnion = OverlayUnion.loading, this.overlayConfig, this.overlayPosition});
+class _OverlayState extends OverlayState {
+  const _OverlayState({this.visibility = OverlayVisibility.closed, this.formType = OverlayFormType.circle, this.style = OverlayStyle.standard, this.overlayUnion = OverlayUnion.loading, this.overlayConfig, this.overlayPosition}): super._();
   
 
 @override@JsonKey() final  OverlayVisibility visibility;

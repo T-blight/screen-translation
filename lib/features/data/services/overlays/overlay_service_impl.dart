@@ -20,8 +20,6 @@ class OverlayServiceImpl implements OverlayService {
   @override
   Future<void> showListFeatureOverlay() async {
     await FlutterOverlayWindow.showOverlay(
-      height: 500,
-      width: _config?.calculatedRectangleSize ?? 900,
       enableDrag: false,
       positionGravity: PositionGravity.auto,
       flag: OverlayFlag.focusPointer,
