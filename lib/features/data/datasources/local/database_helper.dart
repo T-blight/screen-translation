@@ -75,6 +75,12 @@ class DatabaseHelper {
       )
     ''');
 
+    await db.execute('''
+      CREATE TABLE translate_tool (
+        code TEXT PRIMARY KEY,
+        name TEXT
+      )
+    ''');
   }
 
   Future<void> _onConfigure(Database db) async {

@@ -11,7 +11,7 @@ class FrameGroup extends StatelessWidget {
   final double paddingButton;
   final double paddingCard;
   const FrameGroup({
-    Key? key,
+    super.key,
     required this.displayWidget,
     this.weightWidget = 0.9,
     this.color = Colors.white,
@@ -21,7 +21,7 @@ class FrameGroup extends StatelessWidget {
     this.vertical = 7,
     this.paddingButton = 13,
     this.paddingCard = 0,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

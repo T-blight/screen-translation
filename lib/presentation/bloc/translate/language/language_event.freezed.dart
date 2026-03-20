@@ -55,13 +55,12 @@ extension LanguageEventPatterns on LanguageEvent {
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( LoadLanguage value)?  loadLanguage,TResult Function( SwapLanguage value)?  swapLanguages,TResult Function( ChangeLanguage value)?  changeLanguage,required TResult orElse(),}){
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( SwapLanguage value)?  swapLanguages,TResult Function( ChangeLanguage value)?  changeLanguageSource,required TResult orElse(),}){
 final _that = this;
 switch (_that) {
-case LoadLanguage() when loadLanguage != null:
-return loadLanguage(_that);case SwapLanguage() when swapLanguages != null:
-return swapLanguages(_that);case ChangeLanguage() when changeLanguage != null:
-return changeLanguage(_that);case _:
+case SwapLanguage() when swapLanguages != null:
+return swapLanguages(_that);case ChangeLanguage() when changeLanguageSource != null:
+return changeLanguageSource(_that);case _:
   return orElse();
 
 }
@@ -79,13 +78,12 @@ return changeLanguage(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( LoadLanguage value)  loadLanguage,required TResult Function( SwapLanguage value)  swapLanguages,required TResult Function( ChangeLanguage value)  changeLanguage,}){
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( SwapLanguage value)  swapLanguages,required TResult Function( ChangeLanguage value)  changeLanguageSource,}){
 final _that = this;
 switch (_that) {
-case LoadLanguage():
-return loadLanguage(_that);case SwapLanguage():
+case SwapLanguage():
 return swapLanguages(_that);case ChangeLanguage():
-return changeLanguage(_that);case _:
+return changeLanguageSource(_that);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -102,13 +100,12 @@ return changeLanguage(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( LoadLanguage value)?  loadLanguage,TResult? Function( SwapLanguage value)?  swapLanguages,TResult? Function( ChangeLanguage value)?  changeLanguage,}){
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( SwapLanguage value)?  swapLanguages,TResult? Function( ChangeLanguage value)?  changeLanguageSource,}){
 final _that = this;
 switch (_that) {
-case LoadLanguage() when loadLanguage != null:
-return loadLanguage(_that);case SwapLanguage() when swapLanguages != null:
-return swapLanguages(_that);case ChangeLanguage() when changeLanguage != null:
-return changeLanguage(_that);case _:
+case SwapLanguage() when swapLanguages != null:
+return swapLanguages(_that);case ChangeLanguage() when changeLanguageSource != null:
+return changeLanguageSource(_that);case _:
   return null;
 
 }
@@ -125,12 +122,11 @@ return changeLanguage(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  loadLanguage,TResult Function()?  swapLanguages,TResult Function( String id)?  changeLanguage,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  swapLanguages,TResult Function( TranslateLanguage lang)?  changeLanguageSource,required TResult orElse(),}) {final _that = this;
 switch (_that) {
-case LoadLanguage() when loadLanguage != null:
-return loadLanguage();case SwapLanguage() when swapLanguages != null:
-return swapLanguages();case ChangeLanguage() when changeLanguage != null:
-return changeLanguage(_that.id);case _:
+case SwapLanguage() when swapLanguages != null:
+return swapLanguages();case ChangeLanguage() when changeLanguageSource != null:
+return changeLanguageSource(_that.lang);case _:
   return orElse();
 
 }
@@ -148,12 +144,11 @@ return changeLanguage(_that.id);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  loadLanguage,required TResult Function()  swapLanguages,required TResult Function( String id)  changeLanguage,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  swapLanguages,required TResult Function( TranslateLanguage lang)  changeLanguageSource,}) {final _that = this;
 switch (_that) {
-case LoadLanguage():
-return loadLanguage();case SwapLanguage():
+case SwapLanguage():
 return swapLanguages();case ChangeLanguage():
-return changeLanguage(_that.id);case _:
+return changeLanguageSource(_that.lang);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -170,50 +165,17 @@ return changeLanguage(_that.id);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  loadLanguage,TResult? Function()?  swapLanguages,TResult? Function( String id)?  changeLanguage,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  swapLanguages,TResult? Function( TranslateLanguage lang)?  changeLanguageSource,}) {final _that = this;
 switch (_that) {
-case LoadLanguage() when loadLanguage != null:
-return loadLanguage();case SwapLanguage() when swapLanguages != null:
-return swapLanguages();case ChangeLanguage() when changeLanguage != null:
-return changeLanguage(_that.id);case _:
+case SwapLanguage() when swapLanguages != null:
+return swapLanguages();case ChangeLanguage() when changeLanguageSource != null:
+return changeLanguageSource(_that.lang);case _:
   return null;
 
 }
 }
 
 }
-
-/// @nodoc
-
-
-class LoadLanguage implements LanguageEvent {
-  const LoadLanguage();
-  
-
-
-
-
-
-
-@override
-bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is LoadLanguage);
-}
-
-
-@override
-int get hashCode => runtimeType.hashCode;
-
-@override
-String toString() {
-  return 'LanguageEvent.loadLanguage()';
-}
-
-
-}
-
-
-
 
 /// @nodoc
 
@@ -251,10 +213,10 @@ String toString() {
 
 
 class ChangeLanguage implements LanguageEvent {
-  const ChangeLanguage(this.id);
+  const ChangeLanguage(this.lang);
   
 
- final  String id;
+ final  TranslateLanguage lang;
 
 /// Create a copy of LanguageEvent
 /// with the given fields replaced by the non-null parameter values.
@@ -266,16 +228,16 @@ $ChangeLanguageCopyWith<ChangeLanguage> get copyWith => _$ChangeLanguageCopyWith
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ChangeLanguage&&(identical(other.id, id) || other.id == id));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ChangeLanguage&&(identical(other.lang, lang) || other.lang == lang));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,id);
+int get hashCode => Object.hash(runtimeType,lang);
 
 @override
 String toString() {
-  return 'LanguageEvent.changeLanguage(id: $id)';
+  return 'LanguageEvent.changeLanguageSource(lang: $lang)';
 }
 
 
@@ -286,7 +248,7 @@ abstract mixin class $ChangeLanguageCopyWith<$Res> implements $LanguageEventCopy
   factory $ChangeLanguageCopyWith(ChangeLanguage value, $Res Function(ChangeLanguage) _then) = _$ChangeLanguageCopyWithImpl;
 @useResult
 $Res call({
- String id
+ TranslateLanguage lang
 });
 
 
@@ -303,10 +265,10 @@ class _$ChangeLanguageCopyWithImpl<$Res>
 
 /// Create a copy of LanguageEvent
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') $Res call({Object? id = null,}) {
+@pragma('vm:prefer-inline') $Res call({Object? lang = null,}) {
   return _then(ChangeLanguage(
-null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
-as String,
+null == lang ? _self.lang : lang // ignore: cast_nullable_to_non_nullable
+as TranslateLanguage,
   ));
 }
 

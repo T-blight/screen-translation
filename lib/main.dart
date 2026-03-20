@@ -8,13 +8,15 @@ import 'package:tombozi/l10n/app_localizations.dart';
 import 'package:tombozi/presentation/bloc/overlay/overlay_bloc.dart';
 import 'package:tombozi/presentation/bloc/overlay/overlay_event.dart';
 import 'package:tombozi/presentation/screens/overlay/overlay_view.dart';
-import 'package:tombozi/presentation/screens/setting/setting_view.dart';
+import 'package:tombozi/presentation/screens/translate/translate_view.dart';
 
 import 'DI/injection.dart';
 import 'features/domain/entities/overlay_config.dart';
 
-void main() {
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await init();
+
   runApp( MyApp());
 }
 
@@ -77,7 +79,7 @@ class MyApp extends StatelessWidget {
         ),
 
         themeMode: ThemeMode.system,
-        home: HomePage(),
+        home: TranslateView(),
       )
     );
   }
